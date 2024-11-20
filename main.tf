@@ -33,7 +33,7 @@ resource "aws_security_group" "blog_sg" {
   description = "blog security group"
   vpc_id = data.aws_vpc.default.id
 
-  tags {
+  tags = {
     Name = "blog"
   }
 }
