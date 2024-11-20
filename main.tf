@@ -69,8 +69,7 @@ module "blog_alb" {
   subnets = module.blog_vpc.public_subnets
 
   # Security Group
-  security_group_ingress_rules = module.security-group.ingress_rules
-  security_group_egress_rules = module.security-group.egress_rules
+  security_groups = [module.security-group.security_group_id]
 
   listeners = {
     ex-http-https-redirect = {
