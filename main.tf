@@ -17,7 +17,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.blog_sg.id]
+  vpc_security_group_ids = [module.blog_sg.security_group_id]
 
   tags = {
     Name = "HelloWorld"
@@ -39,5 +39,5 @@ module "security-group" {
 
   egress_rules = ["http-80-tcp", "https-443-tcp"]
   egress_cidr_blocks = ["0.0.0.0/0"]
-  
+
 }
